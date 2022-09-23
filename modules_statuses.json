@@ -4,5 +4,6 @@
     "User": true,
     "Category": true,
     "Social": true,
-    "Supplier": true
+    "Supplier": true,
+    "Customer": true
 }
