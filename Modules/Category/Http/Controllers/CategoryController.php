@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category::category.index', [
+        return view('category::index', [
             'categories' => Category::query()->latest()->paginate(10)
         ]);
     }
@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category::category.create');
+        return view('category::create');
     }
 
     /**
@@ -36,8 +36,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        Category::query()->create($request->only(['title', 'slug', 'link', 'status']));
-        return to_route('categories.index');
+        Category::query()->create(array_merge($request->validated(), ['created_by' => auth()->id()]));
+        return to_route('categories.index')->with('success', '');
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category::category.edit', compact('category'));
+        return view('category::edit', compact('category'));
     }
 
     /**
@@ -68,8 +68,8 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        $category->update($request->only(['title', 'slug', 'link', 'status']));
-        return to_route('categories.index');
+        $category->update(array_merge($request->validated(), ['updated_by' => auth()->id()]));
+        return to_route('categories.index')->with('success', '');
     }
 
     /**
@@ -80,41 +80,62 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return back();
+        return back()->with('trash', '');
     }
 
-
+    /**
+     * change of category status
+     * @param $id
+     * @return Renderable
+     */
     public function changeStatus($id)
     {
         $category = Category::query()->findOrFail($id);
         if($category->status == 'inactive')
-            $category->update(['status' => 'active']);
+            $category->update(['status' => 'active', 'updated_by' => auth()->id()]);
         else
-            $category->update(['status' => 'inactive']);
+            $category->update(['status' => 'inactive', 'updated_by' => auth()->id()]);
 
-        return back();
+        return back()->with('change-status', '');
     }
 
+    /**
+     * Display a listing of the trash categories.
+     * @return Renderable
+     */
     public function trash()
     {
-        return view('category::category.trash',[
+        return view('category::trash',[
             'categories' => Category::onlyTrashed()->get()
         ]);
     }
 
+    /**
+     * restore all categories that have been trashed
+     * @return Renderable
+     */
     public function restoreAll()
     {
         Category::onlyTrashed()->restore();
-
-        return back();
+        return back()->with('restore-all', '');
     }
 
+     /**
+     * restore a category that has been trashed
+     * @param $id
+     * @return Renderable
+     */
     public function restore($id)
     {
         Category::onlyTrashed()->find($id)->restore();
-        return back();
+        return back()->with('restore', '');
     }
 
+    /**
+     * force delete a category
+     * @param $id
+     * @return Renderable
+     */
     public function forceDelete($id)
     {
         Category::onlyTrashed()->find($id)->forceDelete();

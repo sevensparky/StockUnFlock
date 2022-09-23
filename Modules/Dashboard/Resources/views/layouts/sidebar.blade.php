@@ -31,7 +31,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">اجزای شخصی سازی شده:</h6>
                 <a class="collapse-item" href="{{ route('categories.index') }}">دسته بندی ها</a>
-                <a class="collapse-item" href="{{ route('subcategories.index') }}">زیر دسته ها</a>
                 <a class="collapse-item" href="{{ route('tags.index') }}">برچسب ها</a>
                 <a class="collapse-item" href="{{ route('faq.index') }}">سوالات متداول</a>
                 <a class="collapse-item" href="{{ route('contact.index') }}">بخش تماس با ما</a>

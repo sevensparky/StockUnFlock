@@ -6,14 +6,13 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Category\Models\Subcategory;
 
 class Category extends Model
 {
     use HasFactory, Sluggable, SoftDeletes;
 
     protected $fillable = [
-        'title', 'slug', 'link', 'status'
+        'title', 'slug', 'status', 'created_by', 'updated_by'
     ];
 
     /**
@@ -30,11 +29,6 @@ class Category extends Model
         ];
     }
 
-    public function subcategories()
-    {
-        return $this->hasMany(Subcategory::class);
-    }
-
 
     public function getRouteKeyName(): string
     {
@@ -42,7 +36,7 @@ class Category extends Model
     }
 
     /**
-     * convert row status record to persian // TODO: clear grammar
+     * convert status record to persian
      *
      * @return string
      */
