@@ -6,11 +6,11 @@
             <h1 class="h3 mb-2 text-gray-800">سطل زباله</h1>
 
             <div class="btn-group" role="group">
-                <a href="{{ route('categories.restore.all') }}" class="btn btn-warning"
+                <a href="{{ route('suppliers.restore.all') }}" class="btn btn-warning"
                    tooltip="بازیابی همه" flow="up" title="بازیابی همه"><i
                         class="fa fa-reply-all"></i></a>
 
-                <a href="{{ route('categories.index') }}" class="btn btn-primary"
+                <a href="{{ route('suppliers.index') }}" class="btn btn-primary"
                    tooltip="بازگشت" flow="up" title="بازگشت"><i
                         class="fa fa-arrow-left"></i></a>
             </div>
@@ -33,7 +33,7 @@
                         </thead>
 
                         <tbody>
-                        @forelse($categories as $item => $category)
+                        @forelse($suppliers as $item => $category)
                             <tr>
                                 <td>{{ $item + 1 }}</td>
                                 <td>{{ $category->title }}</td>
@@ -47,7 +47,7 @@
                                 <td>{{ setDateToJalali($category->created_at, '%B %d، %Y') }}</td>
                                 <td style="display: block ruby" class="text-center">
 
-                                    <form action="{{ route('categories.force.delete', $category->id) }}" method="post">
+                                    <form action="{{ route('suppliers.force.delete', $category->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" title="حذف" tooltip="حذف" flow="right"
@@ -56,7 +56,7 @@
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('categories.restore', $category->id) }}" method="get">
+                                    <form action="{{ route('suppliers.restore', $category->id) }}" method="get">
                                         @csrf
                                         <button type="submit" title="بازیابی" tooltip="بازیابی" flow="right"
                                                 class="btn btn-sm btn-info">

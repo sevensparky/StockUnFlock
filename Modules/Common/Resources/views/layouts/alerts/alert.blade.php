@@ -9,25 +9,25 @@
 
     @if(session()->has('change-status'))
         <script>
-            swalToast('وضعیت با موفقیت تغییر کرد')
+            swalToast('وضعیت با موفقیت تغییر کرد', 'success', 'top-right', 3500)
         </script>
     @endif
 
     @if(session()->has('trash'))
         <script>
-            swalToast('با موفقیت به سطل زباله انتقال یافت')
+            swalToast('با موفقیت به سطل زباله انتقال یافت', 'success', 'top-right', 3500)
         </script>
     @endif
 
     @if(session()->has('restore'))
         <script>
-            swalToast('با موفقیت بازیابی شد')
+            swalToast('با موفقیت بازیابی شد', 'success', 'top-right', 3500)
         </script>
     @endif
 
     @if(session()->has('restore-all'))
         <script>
-            swalToast()
+            swalToast('آیتم ها با موفقیت بازیابی شدند', 'success', 'top-right', 3500)
         </script>
     @endif
 @endpush

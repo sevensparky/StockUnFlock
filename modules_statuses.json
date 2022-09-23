@@ -3,5 +3,6 @@
     "Common": true,
     "User": true,
     "Category": true,
-    "Social": true
+    "Social": true,
+    "Supplier": true
 }

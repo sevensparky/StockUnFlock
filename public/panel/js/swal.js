@@ -29,11 +29,12 @@ function swalToast(title, icon, position, time = 1500) {
     });
 }
 
-function swalConfirm(className) {
+function swalConfirm(className, formName) {
 
     $(document).ready(function () {
-        let name = className;
-        let element = $('.' + name);
+        let ClassName = className;
+        let FormName = formName;
+        let element = $('.' + ClassName);
 
         element.on('click', function (e){
             e.preventDefault();
@@ -47,7 +48,7 @@ function swalConfirm(className) {
             });
 
             swalWithBootstrapButton.fire({
-                title: 'آیا از انجام حذف این آیتم اطمینان دارید؟',
+                title: 'آیا از حذف این آیتم اطمینان دارید؟',
                 text: "دیگر قادر به بازیابی این آیتم نخواهید بود!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -56,9 +57,9 @@ function swalConfirm(className) {
                 confirmButtonText: 'بله مشکلی نیست',
                 cancelButtonText: 'بی خیال'
             }).then((result) => {
-                if (result.value == true) {
-                    $(this).submit();
-                    // swal();
+                if (result.value === true) {
+                    document.getElementById(FormName).submit();
+                    swal();
                 }else if (result.dismiss === Swal.DismissReason.cancel){
                     swalToast('درخواست با موفقیت لغو شد','success','top-right', 2500)
                 }
