@@ -134,6 +134,10 @@ return array(
         "size" => "اندازه",
         "body" => "متن",
         "mobile_no" => "شماره تلفن همراه",
-        "image" => "تصویر"
+        "image" => "تصویر",
+        "category_id" => "دسته بندی",
+        "unit_id" => "واحد",
+        "supplier_id" => "فروشنده",
+        "quantity" => "تعداد",
     ),
 );

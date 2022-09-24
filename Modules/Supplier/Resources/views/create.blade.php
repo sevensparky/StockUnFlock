@@ -31,6 +31,7 @@
                                 <input type="text" class="form-control" name="mobile_no" id="mobile_no"
                                     placeholder="شماره تلفن همراه فروشنده را وارد کنید.."
                                     value="{{ old('mobile_no', optional($supplier ?? null)->mobile_no) }}" aria-describedby="mobile_no">
+                                    <small class="text text-primary"><i class="fa fa-exclamation-circle ml-1"></i>برای وارد کردن این آیتم کیبورد شما باید انگلیسی باشد</small>
                                 @error('mobile_no')
                                     <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror

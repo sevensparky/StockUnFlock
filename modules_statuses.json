@@ -6,5 +6,6 @@
     "Social": true,
     "Supplier": true,
     "Customer": true,
-    "Unit": true
+    "Unit": true,
+    "Product": true
 }

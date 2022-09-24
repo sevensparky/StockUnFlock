@@ -94,4 +94,10 @@
     <script src="{{ asset('panel/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <script src="{{ asset('panel/js/demo/datatables-demo.js') }}"></script>
+
+    @if(session()->has('notFoundItem'))
+        <script>
+            swalToast("{{ session('notFoundItem') }}", 'warning', 'top-right', 5000)
+        </script>
+    @endif
 @endpush

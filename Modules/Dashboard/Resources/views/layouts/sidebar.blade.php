@@ -41,19 +41,31 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>ابزارها</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
+            aria-expanded="true" aria-controls="collapseCategories">
+            <i class="fa fa-stream"></i>
+            <span>بخش دسته بندی ها</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+        <div id="collapseCategories" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">ابزار های شخصی سازی شده:</h6>
-                <a class="collapse-item" href="utilities-color.html">رنگ ها</a>
-                <a class="collapse-item" href="utilities-border.html">خطوط</a>
-                <a class="collapse-item" href="utilities-animation.html">انیمیشن ها</a>
-                <a class="collapse-item" href="utilities-other.html">دیگر ابزار ها</a>
+                <h6 class="collapse-header">مدیریت همه دسته بندی ها:</h6>
+                <a class="collapse-item" href="{{ route('categories.index') }}">دسته بندی ها</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUnits"
+            aria-expanded="true" aria-controls="collapseUnits">
+            <i class="fa fa-cube"></i>
+            <span>بخش واحد ها</span>
+        </a>
+        <div id="collapseUnits" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">مدیریت همه واحد ها:</h6>
+                <a class="collapse-item" href="{{ route('units.index') }}">واحد ها</a>
             </div>
         </div>
     </li>
@@ -89,16 +101,16 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSidebar"
-            aria-expanded="true" aria-controls="collapseSidebar">
-            <i class="fa fa-cube"></i>
-            <span>بخش واحد ها</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
+            aria-expanded="true" aria-controls="collapseProducts">
+            <i class="fa fa-luggage-cart"></i>
+            <span>بخش محصولات</span>
         </a>
-        <div id="collapseSidebar" class="collapse" aria-labelledby="headingUtilities"
+        <div id="collapseProducts" class="collapse" aria-labelledby="headingProducts"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">مدیریت همه واحد ها:</h6>
-                <a class="collapse-item" href="{{ route('units.index') }}">واحد ها</a>
+                <h6 class="collapse-header">مدیریت همه محصولات:</h6>
+                <a class="collapse-item" href="{{ route('products.index') }}">محصولات</a>
             </div>
         </div>
     </li>
