@@ -13,7 +13,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">ایجاد محصول جدید</h6>
             </div>
             <div class="card-body">
-                <form class="form" action="{{ route('products.update', ) }}" method="post">
+                <form class="form" action="{{ route('products.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <div class="row">

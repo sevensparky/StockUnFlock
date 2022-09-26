@@ -6,6 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Product\Models\Product;
 
 class Unit extends Model
 {
@@ -44,4 +45,10 @@ class Unit extends Model
     {
         return $this->status == "active" ? 'فعال' : 'غیر فعال';
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

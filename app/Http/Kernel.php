@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'verifyCategories' => \Modules\Product\Http\Middleware\verifyCategoriesCount::class,
         'verifyUnits' => \Modules\Product\Http\Middleware\verifyUnitsCount::class,
-        'verifySuppliers' => \Modules\Product\Http\Middleware\verifySuppliersCount::class
+        'verifySuppliers' => \Modules\Product\Http\Middleware\verifySuppliersCount::class,
+        'verifyProducts' => \Modules\Purchase\Http\Middleware\VerifyProductCount::class
     ];
 }

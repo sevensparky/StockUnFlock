@@ -1,22 +1,21 @@
 <?php
 
-namespace Modules\User\Providers;
+namespace Modules\Purchase\Providers;
 
-
-use Illuminate\Database\Eloquent\Factories\Factory as FactoriesFactory;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Factory;
 
-class UserServiceProvider extends ServiceProvider
+class PurchaseServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'User';
+    protected $moduleName = 'Purchase';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'user';
+    protected $moduleNameLower = 'purchase';
 
     /**
      * Boot the application events.
@@ -29,9 +28,6 @@ class UserServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
-        FactoriesFactory::guessFactoryNamesUsing(function ($name){
-            return (string) "\Modules\User\Database\Factories\\" . (class_basename($name)). 'Factory';
-        });
     }
 
     /**

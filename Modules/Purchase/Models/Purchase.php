@@ -1,21 +1,23 @@
 <?php
 
-namespace Modules\Product\Models;
+namespace Modules\Purchase\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Category\Models\Category;
+use Modules\Product\Models\Product;
 use Modules\Supplier\Models\Supplier;
-use Modules\Unit\Models\Unit;
 
-class Product extends Model
+class Purchase extends Model
 {
-    use HasFactory, Sluggable, SoftDeletes;
+    use HasFactory, SoftDeletes, Sluggable;
 
     protected $fillable = [
-        'title', 'quantity', 'supplier_id', 'unit_id', 'category_id', 'slug', 'status', 'created_by', 'updated_by'
+        'supplier_id', 'category_id', 'product_id', 'purchase_no', 'slug',
+        'date', 'description', 'buying_quantity', 'unit_price', 'buying_price',
+        'status', 'created_by', 'updated_by',
     ];
 
     /**
@@ -27,15 +29,9 @@ class Product extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'purchase_no'
             ]
         ];
-    }
-
-
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
     }
 
     /**
@@ -45,13 +41,18 @@ class Product extends Model
      */
     public function getStatusToPersianAttribute(): string
     {
-        return $this->status == "active" ? 'فعال' : 'غیر فعال';
+        return $this->status == "approved" ? 'تایید شده' : 'در حال بررسی';
     }
 
 
     public function supplier()
     {
         return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
     public function unit()
@@ -63,5 +64,4 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
-
 }

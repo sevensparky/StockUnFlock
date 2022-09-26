@@ -115,6 +115,21 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchases"
+            aria-expanded="true" aria-controls="collapsePurchases">
+            <i class="fa fa-money-bill-alt"></i>
+            <span>بخش خرید ها</span>
+        </a>
+        <div id="collapsePurchases" class="collapse" aria-labelledby="headingPurchases"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">مدیریت همه خرید ها:</h6>
+                <a class="collapse-item" href="{{ route('purchases.index') }}">خرید ها</a>
+            </div>
+        </div>
+    </li>
+
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">

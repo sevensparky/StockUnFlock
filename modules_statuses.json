@@ -7,5 +7,6 @@
     "Supplier": true,
     "Customer": true,
     "Unit": true,
-    "Product": true
+    "Product": true,
+    "Purchase": true
 }

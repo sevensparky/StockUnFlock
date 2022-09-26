@@ -45,4 +45,10 @@ class Category extends Model
         return $this->status == "active" ? 'فعال' : 'غیر فعال';
     }
 
+    
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

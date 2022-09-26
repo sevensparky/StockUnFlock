@@ -30,4 +30,10 @@
             swalToast('آیتم ها با موفقیت بازیابی شدند', 'success', 'top-right', 3500)
         </script>
     @endif
+
+    @if(session()->has('somethingWasWrong'))
+        <script>
+            swalToast('مشکلی رخ داده لطفا دوباره تلاش کنید', 'success', 'top-right', 3500)
+        </script>
+    @endif
 @endpush
