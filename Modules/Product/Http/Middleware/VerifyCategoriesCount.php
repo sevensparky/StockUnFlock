@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Modules\Category\Models\Category;
 
-class verifyCategoriesCount
+class VerifyCategoriesCount
 {
     /**
      * Handle an incoming request.

@@ -4,9 +4,9 @@ namespace Modules\Product\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Modules\Supplier\Models\Supplier;
+use Modules\Unit\Models\Unit;
 
-class verifySuppliersCount
+class VerifyUnitsCount
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,9 @@ class verifySuppliersCount
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Supplier::all()->count() <= 0) {
-            return to_route('suppliers.index')->with('notFoundItem', 'هیچ فروشنده ایی یافت نشد لذا امکان افزودن محصول وجود ندارد');
+        if (Unit::all()->count() <= 0)
+        {
+            return redirect(route('units.index'))->with('notFoundItem', 'هیچ واحدی یافت نشد لذا امکان افزودن محصول وجود ندارد');
         }
         return $next($request);
     }
