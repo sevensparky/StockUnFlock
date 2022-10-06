@@ -5,6 +5,7 @@ namespace Modules\Customer\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Invoice\Models\Invoice;
 
 class Customer extends Model
 {
@@ -24,4 +25,11 @@ class Customer extends Model
     {
         return $this->status == "active" ? 'فعال' : 'غیر فعال';
     }
+
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
 }

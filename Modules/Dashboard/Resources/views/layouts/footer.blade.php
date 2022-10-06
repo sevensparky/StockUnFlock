@@ -17,7 +17,12 @@
             <div class="modal-body">روی دکمه خروج کلیک کنید اگر اطمینان دارید که می خواهید خارج شوید!</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">لغو</button>
-                <a class="btn btn-primary" href="">خروج</a>
+                <a class="btn btn-primary" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">خروج</a>
+
+                    <form action="{{ route('logout') }}" method="post" class="d-none" id="logout-form">
+                    @csrf
+                    </form>
             </div>
         </div>
     </div>

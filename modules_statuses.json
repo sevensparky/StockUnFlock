@@ -8,5 +8,6 @@
     "Customer": true,
     "Unit": true,
     "Product": true,
-    "Purchase": true
+    "Purchase": true,
+    "Invoice": true
 }
