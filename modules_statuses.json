@@ -9,5 +9,6 @@
     "Unit": true,
     "Product": true,
     "Purchase": true,
-    "Invoice": true
+    "Invoice": true,
+    "Warehouse": true
 }

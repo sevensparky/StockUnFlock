@@ -101,6 +101,21 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWarehouse"
+            aria-expanded="true" aria-controls="collapseWarehouse">
+            <i class="fa fa-warehouse"></i>
+            <span>بخش انبارها</span>
+        </a>
+        <div id="collapseWarehouse" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">مدیریت همه انبار ها:</h6>
+                <a class="collapse-item" href="{{ route('warehouses.index') }}">انبار ها</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts"
             aria-expanded="true" aria-controls="collapseProducts">
             <i class="fa fa-luggage-cart"></i>

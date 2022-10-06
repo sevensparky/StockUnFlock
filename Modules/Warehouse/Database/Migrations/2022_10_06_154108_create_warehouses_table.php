@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->unique();
+            $table->string('slug');
+            $table->string('tel')->nullable();
+            $table->string('address')->nullable();
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('inactive');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
