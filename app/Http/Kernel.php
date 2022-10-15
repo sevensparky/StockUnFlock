@@ -63,9 +63,9 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'verifyCategories' => \Modules\Product\Http\Middleware\verifyCategoriesCount::class,
-        'verifyUnits' => \Modules\Product\Http\Middleware\verifyUnitsCount::class,
-        'verifySuppliers' => \Modules\Product\Http\Middleware\verifySuppliersCount::class,
+        'verifyCategories' => \Modules\Product\Http\Middleware\VerifyCategoriesCount::class,
+        'verifyUnits' => \Modules\Product\Http\Middleware\VerifyUnitsCount::class,
+        'verifySuppliers' => \Modules\Product\Http\Middleware\VerifySuppliersCount::class,
         'verifyProducts' => \Modules\Purchase\Http\Middleware\VerifyProductCount::class
     ];
 }

@@ -28,6 +28,8 @@ class ProductRequest extends FormRequest
             'supplier_id' => 'required',
             'unit_id' => 'required',
             'category_id' => 'required',
+            'product_code' => 'nullable',
+            'invoice_code' => 'nullable',
             'quantity' => 'required|numeric',
         ];
     }

@@ -10,65 +10,43 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item">
-        <a class="nav-link" href="/dashboard">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>داشبورد</span></a>
     </li>
 
     <hr class="sidebar-divider">
 
-    {{-- <div class="sidebar-heading">
-        سطح مشترک
-    </div>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCalendar"
+            aria-expanded="true" aria-controls="collapseCalendar">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>تقویم</span>
+        </a>
+        <div id="collapseCalendar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('calendar.index') }}">ساعت و تقویم روز</a>
+            </div>
+        </div>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>اجزا</span>
+            <span>اجزا مشترک</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">اجزای شخصی سازی شده:</h6>
-                <a class="collapse-item" href="{{ route('categories.index') }}">دسته بندی ها</a>
-                <a class="collapse-item" href="{{ route('tags.index') }}">برچسب ها</a>
-                <a class="collapse-item" href="{{ route('faq.index') }}">سوالات متداول</a>
-                <a class="collapse-item" href="{{ route('contact.index') }}">بخش تماس با ما</a>
-                <a class="collapse-item" href="{{ route('social.index') }}">شبکه های اجتماعی</a>
-                <a class="collapse-item" href="cards.html">کارت</a>
-            </div>
-        </div>
-    </li> --}}
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
-            aria-expanded="true" aria-controls="collapseCategories">
-            <i class="fa fa-stream"></i>
-            <span>بخش دسته بندی ها</span>
-        </a>
-        <div id="collapseCategories" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">مدیریت همه دسته بندی ها:</h6>
-                <a class="collapse-item" href="{{ route('categories.index') }}">دسته بندی ها</a>
+                <h6 class="collapse-header">مدیریت اجزا مشترک:</h6>
+                <a class="collapse-item" href="{{ route('categories.index') }}">مدیریت دسته بندی ها</a>
+                <a class="collapse-item" href="{{ route('units.index') }}">مدیریت واحد های سنجش</a>
+                <a class="collapse-item" href="{{ route('customers.index') }}">مدیریت مشتری ها</a>
             </div>
         </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUnits"
-            aria-expanded="true" aria-controls="collapseUnits">
-            <i class="fa fa-cube"></i>
-            <span>بخش واحد ها</span>
-        </a>
-        <div id="collapseUnits" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">مدیریت همه واحد ها:</h6>
-                <a class="collapse-item" href="{{ route('units.index') }}">واحد ها</a>
-            </div>
-        </div>
-    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSuppliers"
@@ -81,21 +59,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">مدیریت همه فروشنده ها:</h6>
                 <a class="collapse-item" href="{{ route('suppliers.index') }}">فروشنده ها</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomer"
-            aria-expanded="true" aria-controls="collapseCustomer">
-            <i class="fa fa-user-alt"></i>
-            <span>بخش مشتری</span>
-        </a>
-        <div id="collapseCustomer" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">مدیریت همه مشتری ها:</h6>
-                <a class="collapse-item" href="{{ route('customers.index') }}">مشتری ها</a>
             </div>
         </div>
     </li>
@@ -134,13 +97,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchases"
             aria-expanded="true" aria-controls="collapsePurchases">
             <i class="fa fa-money-bill-alt"></i>
-            <span>بخش خرید ها</span>
+            <span>بخش خرید و فروش</span>
         </a>
         <div id="collapsePurchases" class="collapse" aria-labelledby="headingPurchases"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">مدیریت همه خرید ها:</h6>
+                <h6 class="collapse-header">مدیریت خرید و فروش:</h6>
                 <a class="collapse-item" href="{{ route('purchases.index') }}">خرید ها</a>
+                <a class="collapse-item" href="{{ route('sell.index') }}">فروش</a>
             </div>
         </div>
     </li>
@@ -160,7 +124,20 @@
         </div>
     </li>
 
-    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile"
+            aria-expanded="true" aria-controls="collapseProfile">
+            <i class="fa fa-user"></i>
+            <span>حساب کاربری</span>
+        </a>
+        <div id="collapseProfile" class="collapse" aria-labelledby="headingInvoices"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">مدیریت حساب کاربری:</h6>
+                <a class="collapse-item" href="{{ route('profile.index') }}">حساب کاربری</a>
+            </div>
+        </div>
+    </li>
 
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

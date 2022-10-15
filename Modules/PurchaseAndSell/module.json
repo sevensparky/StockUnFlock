@@ -1,0 +1,13 @@
+{
+    "name": "PurchaseAndSell",
+    "alias": "purchaseandsell",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PurchaseAndSell\\Providers\\PurchaseAndSellServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

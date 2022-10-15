@@ -95,5 +95,5 @@
     <script>
         swalToast("{{ session('notFoundItem') }}", 'warning', 'top-right', 5000)
     </script>
-    @endif
+@endif
 @endpush

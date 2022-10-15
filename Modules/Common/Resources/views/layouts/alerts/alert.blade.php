@@ -36,4 +36,28 @@
             swalToast('مشکلی رخ داده لطفا دوباره تلاش کنید', 'success', 'top-right', 3500)
         </script>
     @endif
+
+    @if(session()->has('change-password'))
+        <script>
+            swalToast('رمز عبور با موفقیت تغییر کرد', 'success', 'top-right', 3500)
+        </script>
+    @endif
+
+    @if(session()->has('outOfRange'))
+        <script>
+            swalToast('تعداد کالا برای فروش بیشتر از مقدار موجودی وارد شده است', 'error', 'top-right', 5000)
+        </script>
+    @endif
+
+    @if(session()->has('emptyStock'))
+        <script>
+            swalToast('موجودی کافی نیست', 'error', 'top-right', 5000)
+        </script>
+    @endif
+
+    @if(session()->has('passwordDoesNotMatched'))
+        <script>
+            swalToast('رمز عبور فعلی صحیح نمی باشد', 'error', 'top-right', 3500)
+        </script>
+    @endif
 @endpush

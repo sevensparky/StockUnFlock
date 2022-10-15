@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('quantity');
+            $table->unsignedBigInteger('invoice_code');
+            $table->unsignedBigInteger('product_code');
             $table->enum('status', ['active', 'inactive'])->default('inactive')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

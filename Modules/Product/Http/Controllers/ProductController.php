@@ -42,7 +42,8 @@ class ProductController extends Controller
         return view('product::create', [
             'suppliers' => Supplier::all(),
             'categories' => Category::all(),
-            'units' => Unit::all()
+            'units' => Unit::all(),
+            'invoiceCode' => rand(000, 999)
         ]);
     }
 
@@ -53,7 +54,35 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        Product::query()->create(array_merge($request->validated(), ['created_by' => auth()->id()]));
+        // $product_code = null;
+        // $invoice_code = null;
+
+        if ($request->product_code == 'false' or $request->product_code == null) {
+            $request->product_code = rand(00000, 99999);
+        }
+
+        if ($request->product_code == "" or $request->product_code == "true" or !is_numeric($request->product_code)) {
+            $request->validate([
+                'product_code' => "required|numeric"
+            ]);
+        }
+
+        if ($request->invoice_code == "" or $request->invoice_code == "true" or !is_numeric($request->product_code)) {
+            $request->validate([
+                'invoice_code' => "required|numeric"
+            ]);
+        }
+
+        if ($request->invoice_code == 'false' or $request->invoice_code == null) {
+            $request->invoice_code = rand(00000, 99999);
+        }
+
+        Product::query()->create(array_merge($request->validated(), [
+            'product_code' => $request->product_code,
+            'invoice_code' => $request->invoice_code,
+            'created_by' => auth()->id()
+        ]));
+
         return to_route('products.index')->with('success', '');
     }
 

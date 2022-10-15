@@ -139,5 +139,10 @@ return array(
         "unit_id" => "واحد",
         "supplier_id" => "فروشنده",
         "quantity" => "تعداد",
+        "old_password" => "رمز عبور فعلی",
+        "new_password" => "رمز عبور جدید",
+        "confirm_password" => "تکرار رمز عبور",
+        'product_code' => 'کد کالا',
+        'invoice_code' => 'شماره فاکتور'
     ),
 );

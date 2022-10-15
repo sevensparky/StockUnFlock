@@ -1,5 +1,6 @@
 @extends('dashboard::layouts.master')
 @section('title', 'داشبورد')
+@include('common::layouts.alerts.alert')
 @section('content')
     <div class="container-fluid">
 

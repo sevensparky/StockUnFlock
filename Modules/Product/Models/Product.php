@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Category\Models\Category;
+use Modules\PurchaseAndSell\Models\Sell;
 use Modules\Supplier\Models\Supplier;
 use Modules\Unit\Models\Unit;
 
@@ -15,7 +16,8 @@ class Product extends Model
     use HasFactory, Sluggable, SoftDeletes;
 
     protected $fillable = [
-        'title', 'quantity', 'supplier_id', 'unit_id', 'category_id', 'slug', 'status', 'created_by', 'updated_by'
+        'title', 'quantity', 'supplier_id', 'unit_id', 'category_id', 'slug', 'status',
+        'created_by', 'updated_by', 'invoice_code', 'product_code'
     ];
 
     /**
@@ -64,4 +66,9 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+
+    public function sells()
+    {
+        return $this->belongsToMany(Sell::class);
+    }
 }

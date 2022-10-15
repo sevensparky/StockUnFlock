@@ -14,18 +14,17 @@
             <div class="card-body">
                 <form class="form" action="{{ route('categories.store') }}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="title">عنوان دسته بندی</label>
-                                <input type="text" class="form-control" name="title" id="title"
-                                       placeholder="عنوان دسته بندی را وارد کنید.."
-                                       value="{{ old('title', optional($category ?? null)->title) }}"
-                                       aria-describedby="title">
-                                @error('title')
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="title">عنوان دسته بندی</label>
+
+                            <input type="text" class="form-control" name="title" id="title"
+                                placeholder="عنوان دسته بندی را وارد کنید.."
+                                value="{{ old('title', optional($category ?? null)->title) }}" aria-describedby="title">
+                            @error('title')
                                 <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
+                            @enderror
                         </div>
                     </div>
 

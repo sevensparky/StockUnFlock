@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('mobile_no')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
+            $table->string('post_code')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('inactive')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
