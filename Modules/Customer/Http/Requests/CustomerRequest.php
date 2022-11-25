@@ -26,9 +26,9 @@ class CustomerRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:100|string',
             'mobile_no' => 'required|numeric|min:10',
-            'email' => 'required|email|max:255',
+            'email' => 'nullable|email|max:255',
             'address' => 'required',
-            'image' => 'required'
+            'image' => 'nullable'
         ];
     }
 }

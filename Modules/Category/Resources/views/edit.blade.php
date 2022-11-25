@@ -15,23 +15,24 @@
                 <form class="form" action="{{ route('categories.update', $category->slug) }}" method="post">
                     @csrf
                     @method('PUT')
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="title">عنوان دسته بندی</label>
-                                <input type="text" class="form-control" name="title" id="title"
-                                       placeholder="عنوان دسته بندی را وارد کنید.."
-                                       value="{{ old('title', optional($category ?? null)->title) }}"
-                                       aria-describedby="title">
-                                @error('title')
+
+                    <div class="col-lg-6 col-md-12 col-sm-12 m-auto">
+                        <div class="form-group">
+
+                            <label for="title">عنوان دسته بندی</label>
+                            <input type="text" class="form-control" name="title" id="title"
+                                placeholder="عنوان دسته بندی را وارد کنید.."
+                                value="{{ old('title', optional($category ?? null)->title) }}" aria-describedby="title">
+                            @error('title')
                                 <small class="form-text text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
+                            @enderror
+                        </div>
                     </div>
 
-                    <div class="form-group float-left mt-3">
-                        <button class="btn btn-success">ثبت <i class="fa fa-save"></i></button>
-                    </div>
+
+                        <div class="form-group float-left mt-3">
+                            <button class="btn btn-success">ثبت <i class="fa fa-save"></i></button>
+                        </div>
                 </form>
             </div>
         </div>

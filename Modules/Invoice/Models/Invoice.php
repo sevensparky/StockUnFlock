@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Customer\Models\Customer;
+use Modules\Invoice\Models\Payment;
 
 class Invoice extends Model
 {
@@ -15,6 +16,8 @@ class Invoice extends Model
     protected $fillable = [
         'invoice_no', 'slug', 'date', 'description', 'status', 'created_by', 'updated_by'
     ];
+
+    // protected $guarded = [];
 
 
     /**
@@ -41,6 +44,12 @@ class Invoice extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
+    }
+
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 
 }

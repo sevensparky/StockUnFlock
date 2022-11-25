@@ -9,11 +9,13 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Modules\Category\Models\Category;
 use Modules\Customer\Models\Customer;
+use Modules\Invoice\Http\Requests\InvoiceRequest;
 use Modules\Invoice\Models\Invoice;
 use Modules\Invoice\Models\InvoiceDetail;
 use Modules\Invoice\Models\Payment;
 use Modules\Invoice\Models\PaymentDetail;
 use Modules\Product\Models\Product;
+use Modules\Supplier\Models\Supplier;
 
 class InvoiceController extends Controller
 {
@@ -36,6 +38,7 @@ class InvoiceController extends Controller
             'categories' => Category::all(),
             'products' => Product::all(),
             'customers' => Customer::all(),
+            'suppliers' => Supplier::all(),
         ]);
     }
 
@@ -46,75 +49,25 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        $invoice = new Invoice();
-        $invoice->invoice_no = $request->invoice_no[0];
-        $invoice->date = date('Y-m-d', strtotime($request->date[0]));
-        $invoice->description = $request->description;
-        $invoice->status = '0';
-        $invoice->created_by = auth()->id();
-        // dd($invoice->getAttributes());
+        dd($request->all());
+        Invoice::create(array_merge($request->validated(), [
+            'created_by' => auth()->id()
+        ]));
 
-        DB::transaction(function () use ($request, $invoice) {
-            if ($invoice->save()) {
-                $count_category = count($request->category_id);
-                for ($i = 0; $i < $count_category; $i++) {
+        DB::transaction(function () use ($request) {
+            $count_category = count($request->category_id);
+            for ($i = 0; $i < $count_category; $i++) {
 
-                    $invoice_details = new InvoiceDetail();
-                    $invoice_details->date = date('Y-m-d', strtotime($request->date[0]));
-                    $invoice_details->invoice_id = $invoice->id;
-                    $invoice_details->category_id = $request->category_id[$i];
-                    // $invoice_details->product_id = $request->product_id[$i];
-                    $invoice_details->product_id = '2';
-                    // $invoice_details->selling_quantity = $request->selling_quantity[$i];
-                    $invoice_details->selling_quantity = '2';
-                    // $invoice_details->unit_price = $request->unit_price[$i];
-                    $invoice_details->unit_price = '2';
-                    // $invoice_details->selling_price = $request->selling_price[$i];
-                    $invoice_details->selling_price = '2';
-                    $invoice_details->status = '0';
-                    $invoice_details->save();
-                }
-
-                if ($request->customer_id == '0') {
-                    $customer = new Customer();
-                    $customer->name = $request->name;
-                    $customer->mobile_no = $request->mobile_no;
-                    $customer->email = $request->email;
-                    $customer->save();
-                    $customer_id = $customer->id;
-                } else {
-                    $customer_id = $request->customer_id;
-                }
-
-                $payment = new Payment();
-                $payment_details = new PaymentDetail();
-
-                $payment->invoice_id = $invoice->id;
-                $payment->customer_id = $customer_id;
-                $payment->paid_status = $request->paid_status;
-                $payment->discount_amount = $request->discount_amount;
-                $payment->total_amount = $request->estimated_amount;
-
-                if ($request->paid_status == 'full_paid') {
-                    $payment->paid_amount = $request->estimated_amount;
-                    $payment->due_amount = '0';
-                    $payment_details->current_paid_amount = $request->estimated_amount;
-                } elseif ($request->paid_status == 'full_due') {
-                    $payment->paid_amount = '0';
-                    $payment->due_amount = $request->estimated_amount;
-                    $payment_details->current_paid_amount = '0';
-                } elseif ($request->paid_status == 'partial_paid') {
-                    $payment->paid_amount = $request->paid_amount;
-                    $payment->due_amount = $request->estimated_amount - $request->paid_amount;
-                    $payment_details->current_paid_amount = $request->paid_amount;
-                }
-                $payment->save();
-
-                $payment_details->invoice_id = $invoice->id;
-                $payment_details->date = date('Y-m-d', strtotime($request->date[0]));
-                $payment_details->save();
+                $invoice_details = new InvoiceDetail();
+                $invoice_details->category_id = $request->category_id[$i];
+                $invoice_details->product_id = $request->product_id[$i];
+                $invoice_details->unit = $request->unit[$i];
+                $invoice_details->unit_price = $request->unit_price[$i];
+                $invoice_details->last_price = $request->last_price[$i];
+                $invoice_details->save();
             }
         });
+
         return to_route('invoices.index')->with('success', '');
     }
 
@@ -173,5 +126,10 @@ class InvoiceController extends Controller
         $productId = $request->product_id;
         $stock = Product::where('id', $productId)->first()->quantity;
         return response()->json($stock);
+    }
+
+    public function invoicePrint(Invoice $invoice)
+    {
+        return view('invoice::invoice-pdf', compact('invoice'));
     }
 }

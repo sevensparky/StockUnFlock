@@ -12,12 +12,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">ویرایش اطلاعات مشتری</h6>
             </div>
             <div class="card-body">
-                <form class="form" action="{{ route('customers.update', $customer->id) }}" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{ route('customers.update', $customer->id) }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12 mt-2">
                                 <label for="name">نام مشتری</label>
                                 <input type="text" class="form-control" name="name" id="name"
                                     placeholder="نام مشتری را وارد کنید.."
@@ -27,20 +28,21 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12 mt-2">
                                 <label for="mobile_no">شماره تلفن همراه مشتری</label>
                                 <input type="text" class="form-control" name="mobile_no" id="mobile_no"
                                     placeholder="شماره تلفن همراه مشتری را وارد کنید.."
-                                    value="{{ old('mobile_no', optional($customer ?? null)->mobile_no) }}" aria-describedby="mobile_no">
+                                    value="{{ old('mobile_no', optional($customer ?? null)->mobile_no) }}"
+                                    aria-describedby="mobile_no">
                                 @error('mobile_no')
                                     <small class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
 
-                            <div class="col-4">
-                                <label for="email">ایمیل مشتری</label>
+                            <div class="col-lg-4 col-md-12 col-sm-12 mt-2">
+                                <label for="email">پست الکترونیکی مشتری</label>
                                 <input type="text" class="form-control" name="email" id="email"
-                                    placeholder="ایمیل مشتری را وارد کنید.."
+                                    placeholder="پست الکترونیکی مشتری را وارد کنید.."
                                     value="{{ old('email', optional($customer ?? null)->email) }}" aria-describedby="email">
                                 @error('email')
                                     <small class="form-text text-danger">{{ $message }}</small>
@@ -48,51 +50,59 @@
                             </div>
                         </div>
 
-                        <div class="form-group mt-3">
-                            <label for="address">آدرس مشتری</label>
-                            <input type="text" class="form-control" name="address" id="address"
-                                placeholder="آدررس مشتری را وارد کنید.."
-                                value="{{ old('address', optional($customer ?? null)->address) }}" aria-describedby="address">
-                            @error('address')
-                                <small class="form-text text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12 mt-2">
+                                <div class="form-group mt-3">
+                                    <label for="file">تصویر مشتری</label>
 
-                        <div class="form-group mt-3">
-                            <label for="file">تصویر مشتری</label>
+                                    <div class="contain animated bounce">
+                                        <section id="form1" runat="server">
+                                            <div class="alert"></div>
+                                            <div id='img_contain'>
+                                                @if ($customer->image != NULL || $customer->image != '')
+                                                <img id="blah" align='middle' src="{{ asset('storage/'. $customer->image) }}" alt="تصویر مشتری"/>
+                                                @else
+                                                <img id="blah" align='middle' src="{{ asset('no-image.png') }}" alt="تصویر مشتری"/>
+                                                @endif
+                                            </div>
+                                            <div class="input-group" id="input-group">
+                                            <div class="custom-file">
+                                            <div class='file file--upload'>
+                                                <label for='inputGroupFile01'>
+                                                  <i class="fa fa-upload"></i>
+                                                  <span class="mr-2">آپلود تصویر مشتری</span>
+                                                </label>
+                                              <input name="image" id='inputGroupFile01' type='file' />
+                                            </div>
+                                          </div>
+                                        </div>
+                                        </section>
+                                    </div>
 
-                            <div class="contain animated bounce">
-                                <section id="form1" runat="server">
-                                    <div class="alert"></div>
-                                    <div id='img_contain'>
-                                        @if ($customer->image != NULL || $customer->image != '')
-                                        <img id="blah" align='middle' src="{{ asset('storage/'. $customer->image) }}" alt="تصویر مشتری"/>
-                                        @else
-                                        <img id="blah" align='middle' src="{{ asset('no-image.png') }}" alt="تصویر مشتری"/>
-                                        @endif
-                                    </div>
-                                    <div class="input-group" id="input-group">
-                                    <div class="custom-file">
-                                    <div class='file file--upload'>
-                                        <label for='inputGroupFile01'>
-                                          <i class="fa fa-upload"></i>
-                                          <span class="mr-2">آپلود تصویر مشتری</span>
-                                        </label>
-                                      <input name="image" id='inputGroupFile01' type='file' />
-                                    </div>
-                                  </div>
+                                    @error('image')
+                                        <small class="form-text text-danger mt-3">{{ $message }}</small>
+                                    @enderror
                                 </div>
-                                </section>
+
                             </div>
 
-                            @error('image')
-                                <small class="form-text text-danger mt-3">{{ $message }}</small>
-                            @enderror
+                            <div class="col-lg-6 col-md-12 col-sm-12 mt-2">
+                                <div class="form-group mt-3">
+                                    <label for="address">نشانی مشتری</label>
+                                    <textarea class="form-control" name="address" id="address" cols="3" rows="3"
+                                        placeholder="نشانی مشتری را وارد کنید.." style="resize: none">{{ old('address', optional($customer ?? null)->address) }}</textarea>
+
+                                    @error('address')
+                                        <small class="form-text text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group float-left">
                             <button class="btn btn-success">ثبت <i class="fa fa-save"></i></button>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -104,7 +114,6 @@
         .contain {
             margin-left: auto;
             margin-right: auto;
-            /* margin-top: calc(calc(100vh - 405px)/2); */
         }
 
         #form1 {
@@ -192,147 +201,147 @@
         }
 
 
-.variants {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+        .variants {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.variants > div {
-  margin-right: 5px;
-}
+        .variants>div {
+            margin-right: 5px;
+        }
 
-.variants > div:last-of-type {
-  margin-right: 0;
-}
+        .variants>div:last-of-type {
+            margin-right: 0;
+        }
 
-.file {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+        .file {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.file > input[type='file'] {
-  display: none
-}
+        .file>input[type='file'] {
+            display: none
+        }
 
-.file > label {
-  font-size: 1rem;
-  font-weight: 300;
-  cursor: pointer;
-  outline: 0;
-  user-select: none;
-  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
-  border-style: solid;
-  border-radius: 4px;
-  border-width: 1px;
-  background-color: hsl(0, 0%, 100%);
-  color: hsl(0, 0%, 29%);
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+        .file>label {
+            font-size: 1rem;
+            font-weight: 300;
+            cursor: pointer;
+            outline: 0;
+            user-select: none;
+            border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+            border-style: solid;
+            border-radius: 4px;
+            border-width: 1px;
+            background-color: hsl(0, 0%, 100%);
+            color: hsl(0, 0%, 29%);
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.file > label:hover {
-  border-color: hsl(0, 0%, 21%);
-}
+        .file>label:hover {
+            border-color: hsl(0, 0%, 21%);
+        }
 
-.file > label:active {
-  background-color: hsl(0, 0%, 96%);
-}
+        .file>label:active {
+            background-color: hsl(0, 0%, 96%);
+        }
 
-.file > label > i {
-  padding-right: 5px;
-}
+        .file>label>i {
+            padding-right: 5px;
+        }
 
-.file--upload > label {
-  color: hsl(204, 86%, 53%);
-  border-color: hsl(204, 86%, 53%);
-}
+        .file--upload>label {
+            color: hsl(204, 86%, 53%);
+            border-color: hsl(204, 86%, 53%);
+        }
 
-.file--upload > label:hover {
-  border-color: hsl(204, 86%, 53%);
-  background-color: hsl(204, 86%, 96%);
-}
+        .file--upload>label:hover {
+            border-color: hsl(204, 86%, 53%);
+            background-color: hsl(204, 86%, 96%);
+        }
 
-.file--upload > label:active {
-  background-color: hsl(204, 86%, 91%);
-}
+        .file--upload>label:active {
+            background-color: hsl(204, 86%, 91%);
+        }
 
-.file--uploading > label {
-  color: hsl(48, 100%, 67%);
-  border-color: hsl(48, 100%, 67%);
-}
+        .file--uploading>label {
+            color: hsl(48, 100%, 67%);
+            border-color: hsl(48, 100%, 67%);
+        }
 
-.file--uploading > label > i {
-  animation: pulse 5s infinite;
-}
+        .file--uploading>label>i {
+            animation: pulse 5s infinite;
+        }
 
-.file--uploading > label:hover {
-  border-color: hsl(48, 100%, 67%);
-  background-color: hsl(48, 100%, 96%);
-}
+        .file--uploading>label:hover {
+            border-color: hsl(48, 100%, 67%);
+            background-color: hsl(48, 100%, 96%);
+        }
 
-.file--uploading > label:active {
-  background-color: hsl(48, 100%, 91%);
-}
+        .file--uploading>label:active {
+            background-color: hsl(48, 100%, 91%);
+        }
 
-.file--success > label {
-  color: hsl(141, 71%, 48%);
-  border-color: hsl(141, 71%, 48%);
-}
+        .file--success>label {
+            color: hsl(141, 71%, 48%);
+            border-color: hsl(141, 71%, 48%);
+        }
 
-.file--success > label:hover {
-  border-color: hsl(141, 71%, 48%);
-  background-color: hsl(141, 71%, 96%);
-}
+        .file--success>label:hover {
+            border-color: hsl(141, 71%, 48%);
+            background-color: hsl(141, 71%, 96%);
+        }
 
-.file--success > label:active {
-  background-color: hsl(141, 71%, 91%);
-}
+        .file--success>label:active {
+            background-color: hsl(141, 71%, 91%);
+        }
 
-.file--danger > label {
-  color: hsl(348, 100%, 61%);
-  border-color: hsl(348, 100%, 61%);
-}
+        .file--danger>label {
+            color: hsl(348, 100%, 61%);
+            border-color: hsl(348, 100%, 61%);
+        }
 
-.file--danger > label:hover {
-  border-color: hsl(348, 100%, 61%);
-  background-color: hsl(348, 100%, 96%);
-}
+        .file--danger>label:hover {
+            border-color: hsl(348, 100%, 61%);
+            background-color: hsl(348, 100%, 96%);
+        }
 
-.file--danger > label:active {
-  background-color: hsl(348, 100%, 91%);
-}
+        .file--danger>label:active {
+            background-color: hsl(348, 100%, 91%);
+        }
 
-.file--disabled {
-  cursor: not-allowed;
-}
+        .file--disabled {
+            cursor: not-allowed;
+        }
 
-.file--disabled > label {
-  border-color: #e6e7ef;
-  color: #e6e7ef;
-  pointer-events: none;
-}
+        .file--disabled>label {
+            border-color: #e6e7ef;
+            color: #e6e7ef;
+            pointer-events: none;
+        }
 
-@keyframes pulse {
-  0% {
-    color: hsl(48, 100%, 67%);
-  }
-  50% {
-    color: hsl(48, 100%, 38%);
-  }
-  100% {
-    color: hsl(48, 100%, 67%);
-  }
-}
+        @keyframes pulse {
+            0% {
+                color: hsl(48, 100%, 67%);
+            }
 
+            50% {
+                color: hsl(48, 100%, 38%);
+            }
 
+            100% {
+                color: hsl(48, 100%, 67%);
+            }
+        }
     </style>
 @endpush
 

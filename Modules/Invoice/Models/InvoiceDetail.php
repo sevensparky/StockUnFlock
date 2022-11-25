@@ -10,10 +10,11 @@ class InvoiceDetail extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'invoice_id', 'category_id', 'date', 'product_id', 'status', 'selling_quantity',
-        'unit_price', 'selling_price'
-    ];
+    // protected $fillable = [
+    //     'invoice_id', 'category_id', 'date', 'product_id', 'status', 'selling_quantity',
+    //     'unit_price', 'selling_price'
+    // ];
 
+    protected $guarded = [];
 
 }

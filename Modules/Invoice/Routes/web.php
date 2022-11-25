@@ -15,4 +15,6 @@ Route::group(['prefix' => 'dashboard'], function () {
 
     Route::get('invoices/get/product-quantity', [InvoiceController::class, 'getSpecificCategory'])->name('get.product.quantity');
     Route::get('invoices/get/stock', [InvoiceController::class, 'getProductStock'])->name('get.product.stock');
+
+    Route::get('print/invoice/{invoice}', [InvoiceController::class, 'invoicePrint'])->name('invoice.print');
 });

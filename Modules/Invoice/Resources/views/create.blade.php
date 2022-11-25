@@ -8,6 +8,17 @@
         <a href="{{ route('customers.index') }}" class="btn btn-info" tooltip="انصراف" flow="up" title="انصراف">
             <i class="fa fa-arrow-left"></i></a>
     </section>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $item)
+                    <li>{{ $item }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="card shadow mb-4 mt-3">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">ایجاد صورتحساب جدید</h6>
@@ -16,9 +27,10 @@
             <section class="form">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-6">
+
+                        <div class="col-md-3 col-sm-12">
                             <label for="date">تاریخ</label>
-                            <input class="calendar form-control" name="calendar" name="date" id="date"
+                            <input class="calendar form-control" name="date" id="date"
                                 placeholder="تاریخ را وارد کنید.."
                                 value="{{ old('date', optional($customer ?? null)->date) }}" aria-describedby="date" />
 
@@ -27,9 +39,8 @@
                             @enderror
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-md-3 col-sm-12">
                             <label for="invoice_no">شناسه فاکتور</label>
-
                             <input type="text" class="form-control" name="invoice_no" id="invoice_no"
                                 placeholder="شناسه فاکتور را وارد کنید.."
                                 value="{{ old('invoice_no', optional($customer ?? null)->invoice_no) }}"
@@ -39,12 +50,33 @@
                             @enderror
                         </div>
 
+                        <div class="col-md-3 col-sm-12">
+                            <label for="customer_id">نام مشتری</label>
+                            <select name="customer_id" id="customer_id" class="form-control">
+                                <option value="">انتخاب مشتری</option>
+                                {{-- <option value="0">مشتری جدید</option> --}}
+                                @foreach($customers as $customer)
+                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 col-sm-12">
+                            <label for="supplier_id">نام فروشنده</label>
+                            <select name="supplier_id" id="supplier_id" class="form-control">
+                                <option value="">انتخاب فروشنده</option>
+                                @foreach($suppliers as $supplier)
+                                <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="form-group my-3">
                         <div class="row">
 
-                            <div class="col-4">
+                            <div class="col-md-4 col-sm-12">
                                 <label for="category_id">انتخاب دسته</label>
                                 <select class="form-control" name="category_id" id="category_id">
                                     <option value="">دسته مورد نظر را انتخاب کنید...</option>
@@ -57,7 +89,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-md-4 col-sm-12">
                                 <label for="product_id">انتخاب محصول</label>
                                 <select class="form-control" name="product_id" id="product_id">
                                 </select>
@@ -66,7 +98,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-md-4 col-sm-12">
                                 <label for="product_quantity">تعداد موجودی از این محصول</label>
                                 <input type="text" class="form-control" name="product_quantity" id="product_quantity"
                                     readonly>
@@ -133,8 +165,8 @@
                     </table>
 
                     <div class="form-group">
-                        <div class="row">
-                            <div class="col-6">
+                        {{-- <div class="row">
+                            <div class="col-md-6 col-sm-12">
                                 <label for="paid_status">وضعیت پرداخت</label>
                                 <select name="paid_status" id="paid_status" class="form-control">
                                     <option value="">وضعیت پرداخت را مشخص کنید</option>
@@ -147,7 +179,7 @@
                                     id="paid_amount" placeholder="مقدار بدهی را وارد کنید" style="display: none;">
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-md-6 col-sm-12">
                                 <label for="customer_id">مشتری</label>
                                 <select name="customer_id" id="customer_id" class="form-control">
                                     <option value="">انتخاب مشتری</option>
@@ -157,26 +189,26 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group mt-4" id="newCustomer" style="display: none;">
+                        {{-- <div class="form-group mt-4" id="newCustomer" style="display: none;">
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-md-4 col-sm-12">
                                     <input type="text" class="form-control" id="name" name="name"
                                         placeholder="نام مشتری">
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-md-4 col-sm-12">
                                     <input type="text" class="form-control" id="email" name="email"
                                         placeholder="ایمیل مشتری">
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-md-4 col-sm-12">
                                     <input type="text" class="form-control" id="mobile_no" name="mobile_no"
                                         placeholder="کلمه عبور">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group float-left">
                             <button class="btn btn-success">ثبت <i class="fa fa-save"></i></button>
@@ -194,30 +226,28 @@
 
         <tr class="row_item" id="row_item">
 
-            <input type="hidden" name="date[]" value="@{{ date }}">
-            <input type="hidden" name="invoice_no[]" value="@{{ invoice_no }}">
-            <input type="hidden" name="category_id[]" value="@{{ category_id }}">
+
 
             <td>
-                <input type="hidden" name="category_id[]" value="@{{ category_id }}">
+                <input type="hidden" name="category_id" value="@{{ category_id }}">
                 @{{ category_name }}
             </td>
 
             <td>
-                <input type="hidden" name="product_id[]" value="@{{ product_id }}">
+                <input type="hidden" name="product_id" value="@{{ product_id }}">
                 @{{ product_name }}
             </td>
 
             <td>
-                <input type="number" min="1" class="form-control selling_quantity" name="selling_quantity[]" value="">
+                <input type="number" min="1" class="form-control selling_quantity" name="unit" value="">
             </td>
 
             <td>
-                <input type="number" class="form-control unit_price" name="unit_price[]" value="">
+                <input type="number" class="form-control unit_price" name="unit_price" value="">
             </td>
 
             <td>
-                <input type="number" class="form-control selling_price" name="selling_price[]" value="0" readonly>
+                <input type="number" class="form-control selling_price" name="last_price" value="0" readonly>
             </td>
 
             <td>

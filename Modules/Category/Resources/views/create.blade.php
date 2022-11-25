@@ -15,7 +15,7 @@
                 <form class="form" action="{{ route('categories.store') }}" method="post">
                     @csrf
 
-                    <div class="col-12">
+                    <div class="col-lg-6 col-md-12 col-sm-12 m-auto">
                         <div class="form-group">
                             <label for="title">عنوان دسته بندی</label>
 

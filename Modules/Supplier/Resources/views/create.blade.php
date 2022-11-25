@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="name">نام فروشنده</label>
                                 <input type="text" class="form-control" name="name" id="name"
                                     placeholder="نام فروشنده را وارد کنید.."
@@ -26,7 +26,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="mobile_no">شماره تلفن همراه فروشنده</label>
                                 <input type="text" class="form-control" name="mobile_no" id="mobile_no"
                                     placeholder="شماره تلفن همراه فروشنده را وارد کنید.."
@@ -37,7 +37,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="email">پست الکترونیکی فروشنده</label>
                                 <input type="text" class="form-control" name="email" id="email"
                                     placeholder="پست الکترونیکی فروشنده را وارد کنید.."

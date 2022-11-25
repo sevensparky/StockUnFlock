@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Modules\Dashboard\Http\Requests\UserRequest;
+use Modules\Product\Models\Product;
 use Modules\User\Models\User;
 
 class DashboardController extends Controller
@@ -18,7 +19,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard::index');
+        return view('dashboard::index',[
+            'products' => count(Product::all())
+        ]);
     }
 
     /**

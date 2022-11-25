@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Invoice\Models\Invoice;
+use Modules\Invoice\Models\Payment;
 
 class Customer extends Model
 {
@@ -30,6 +31,12 @@ class Customer extends Model
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
     }
 
 }

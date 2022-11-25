@@ -24,7 +24,13 @@ class InvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'supplier_id' => 'nullable',
+            'customer_id' => 'nullable',
+            'product_id' => 'nullable',
+            'category_id' => 'nullable',
+            'invoice_no' => 'nullable',
+            // 'total_sum' => 'required',
+            'description' => 'nullable',
         ];
     }
 }

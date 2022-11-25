@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
                                 <label for="title">نام انبار</label>
                                 <input type="text" class="form-control" name="title" id="title"
                                        placeholder="نام انبار را وارد کنید.."
@@ -27,7 +27,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
                                 <label for="tel">تلفن انبار</label>
                                 <input type="text" class="form-control" name="tel" id="tel"
                                        placeholder="تلفن انبار را وارد کنید.."

@@ -16,7 +16,7 @@
                 <section class="form">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
                                 <label for="date">تاریخ</label>
                                 <input type="date" class="form-control" name="date" id="date"
                                     placeholder="تاریخ را وارد کنید.."
@@ -27,7 +27,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
                                 <label for="purchase_no">شناسه خرید</label>
                                 <input type="text" class="form-control" name="purchase_no" id="purchase_no"
                                     placeholder="شناسه خرید را وارد کنید.."
@@ -42,7 +42,7 @@
 
                        <div class="form-group my-3">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="supplier_id">انتخاب فروشنده</label>
                                     <select class="form-control" name="supplier_id" id="supplier_id">
                                         <option value="">فروشنده مورد نظر را انتخاب کنید...</option>
@@ -55,7 +55,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="category_id">انتخاب دسته</label>
                                     <select class="form-control" name="category_id" id="category_id">
                                     </select>
@@ -64,7 +64,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="product_id">انتخاب محصول</label>
                                     <select class="form-control" name="product_id" id="product_id">
                                     </select>

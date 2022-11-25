@@ -17,7 +17,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-sm-6 col-sm-12">
                                 <label for="name">نام مشتری</label>
                                 <input type="text" class="form-control" name="name" id="name"
                                     placeholder="نام مشتری را وارد کنید.."
@@ -27,7 +27,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-sm-6 col-sm-12">
                                 <label for="mobile_no">شماره تلفن همراه مشتری</label>
                                 <input type="text" class="form-control" name="mobile_no" id="mobile_no"
                                     placeholder="شماره تلفن همراه مشتری را وارد کنید.."
@@ -37,7 +37,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-sm-6 col-sm-12">
                                 <label for="email">ایمیل مشتری</label>
                                 <input type="text" class="form-control" name="email" id="email"
                                     placeholder="ایمیل مشتری را وارد کنید.."

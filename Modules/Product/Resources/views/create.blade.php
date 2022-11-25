@@ -17,7 +17,7 @@
                     @csrf
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
                                 <label >کد کالا</label>
 
                                 <section class="d-inline-block mr-3">
@@ -48,7 +48,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-6 col-sm-12">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
                                 <label >شماره فاکتور</label>
 
                                 <section class="d-inline-block mr-3">
@@ -83,7 +83,7 @@
 
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-lg-8 col-md-12 col-sm-12">
                                 <label for="title">عنوان محصول</label>
                                 <input type="text" class="form-control" name="title" id="title"
                                     value="{{ old('title', optional($product ?? null)->title) }}"
@@ -93,7 +93,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="quantity">تعداد محصول</label>
                                 <input type="text" class="form-control" name="quantity" id="quantity"
                                     value="{{ old('quantity', optional($product ?? null)->quantity) }}"
@@ -109,7 +109,7 @@
 
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="category_id">دسته بندی</label>
                                 <select class="form-control" name="category_id" id="category_id">
                                     <option value="">دسته بندی مورد نظر را انتخاب کنید...</option>
@@ -122,7 +122,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="unit_id">واحد</label>
                                 <select class="form-control" name="unit_id" id="unit_id">
                                     <option value="">واحد مورد نظر را انتخاب کنید...</option>
@@ -135,7 +135,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-12 col-sm-12">
                                 <label for="supplier_id">فروشنده</label>
                                 <select class="form-control" name="supplier_id" id="supplier_id">
                                     <option value="">فروشنده مورد نظر را انتخاب کنید...</option>

@@ -27,7 +27,6 @@
                                 {{-- <th>شناسه فاکتور</th> --}}
                                 <th>نام مشتری</th>
                                 <th>شماره فاکتور</th>
-                                <th>توضیحات</th>
                                 {{-- <th>وضعیت</th> --}}
                                 <th>تاریخ</th>
                                 <th>عملیات</th>
@@ -40,9 +39,9 @@
                                     <td>{{ $item + 1 }}</td>
                                     {{-- <td>{{ $invoice->customer_id }}</td> --}}
                                     {{-- <td>{{  }}</td> --}}
-                                    @dd($invoice->customer)
+                                    <td>تست</td>
+                                    {{-- @dd($invoice->payments) --}}
                                     <td>{{ $invoice->invoice_no }}</td>
-                                    <td>{{ $invoice->description }}</td>
                                     {{-- <td class="text-center">
                                         @if ($invoice->status == 'approved')
                                             <span class="badge badge-success">{{ $invoice->statusToPersian }}</span>
@@ -50,9 +49,9 @@
                                             <span class="badge badge-warning">{{ $invoice->statusToPersian }}</span>
                                         @endif
                                     </td> --}}
-                                    <td>{{ $invoice->date }}</td>
+                                    {{-- <td>{{ $invoice->date }}</td> --}}
 
-                                    {{-- <td>{{ setDateToJalali($invoice->created_at, '%B %d، %Y') }}</td> --}}
+                                    <td>{{ setDateToJalali($invoice->date, '%B %d، %Y') }}</td>
                                     <td style="display: block ruby" class="text-center">
 
                                        @if ($invoice->status == 'pandding')
@@ -65,6 +64,10 @@
                                             </button>
                                         </form>
                                        @endif
+
+                                       <a href="{{ route('invoice.print', $invoice->slug) }}" class="btn btn-sm btn-primary" tooltip="چاپ فاکتور" flow="up">
+                                        <i class="fa fa-print"></i>
+                                       </a>
 
                                         <form action="{{ route('invoices.destroy', $invoice->id) }}" method="post">
                                             @csrf

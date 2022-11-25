@@ -18,13 +18,16 @@ return new class extends Migration
             $table->foreignId('invoice_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
-            $table->date('date');
-            $table->integer('selling_quantity')->nullable();
-            $table->integer('unit_price')->nullable();
-            $table->integer('selling_price')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('inactive');
+            $table->string('unit')->nullable();
+            $table->string('unit_price')->nullable();
+            $table->string('last_price')->nullable();
+            $table->string('discount_price')->nullable();
+            // $table->date('date');
+            // $table->integer('selling_quantity')->nullable();
+            $table->integer('total_price')->nullable();
+            // $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

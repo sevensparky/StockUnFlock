@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
                                             id="email" name="email" aria-describedby="emailHelp"
-                                            placeholder="آدرس ایمیل خود را وارد کنید..." required autofocus>
+                                            placeholder="نام کاربری، شماره تلفن و یا ایمیل خود را وارد کنید..." required autofocus>
                                     </div>
                                     @error('email')
                                         <span class="text-danger">{{ $message }}</span>

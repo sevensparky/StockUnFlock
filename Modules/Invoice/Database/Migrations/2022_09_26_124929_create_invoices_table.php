@@ -15,13 +15,21 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->string('invoice_no');
+            $table->foreignId('supplier_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->string('invoice_no')->unique();
             $table->string('slug');
-            $table->date('date')->nullable();
+            // $table->integer('selling_quantity')->nullable();
+            // $table->integer('unit_price')->nullable();
+            // $table->integer('selling_price')->nullable();
+            // $table->integer('total_sum')->nullable();
+            // $table->integer('date')->nullable();
             $table->text('description')->nullable();
             $table->enum('status', ['pending', 'approved'])->default('pending')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            // $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

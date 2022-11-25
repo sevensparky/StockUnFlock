@@ -1,10 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">پنل مدیریت</div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
+        <div class="sidebar-brand-text mx-3">پنل کاربری</div>
     </a>
 
     <hr class="sidebar-divider my-0">
@@ -16,20 +13,6 @@
     </li>
 
     <hr class="sidebar-divider">
-
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCalendar"
-            aria-expanded="true" aria-controls="collapseCalendar">
-            <i class="fas fa-fw fa-calendar"></i>
-            <span>تقویم</span>
-        </a>
-        <div id="collapseCalendar" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('calendar.index') }}">ساعت و تقویم روز</a>
-            </div>
-        </div>
-    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
