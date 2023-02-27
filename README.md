@@ -1,10 +1,8 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 ## About StockUnFlock
 
-#### Complete Inventory Management System
+#### Complete Persian Inventory Management System
 
-    description
+An inventory management system (or inventory system) is the process by which you track your goods throughout your entire supply chain, from purchasing to production to end sales. It governs how you approach inventory management for your business.
 
 ## What is Inventory Management System
 
@@ -12,7 +10,8 @@ Inventory management software is a software system for tracking inventory levels
 
 ## Preview
 
-some images ...
+![Dashboard](public/readme/1.png)
+### Dashboard
 
 > ##### powered by [@Laravel](https://laravel.com)
 __________________________________________________
@@ -76,5 +75,3 @@ php artisan serve
 ```
 ___
 ### **_Application is ready! enjoy :)_**
-
-### **In the end, remember to give to star this project. thanks. :D**

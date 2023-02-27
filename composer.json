@@ -5,13 +5,15 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^7.4|^8.0.2",
+        "carlos-meneses/laravel-mpdf": "^1.1",
         "cviebrock/eloquent-sluggable": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "morilog/jalali": "^3.4",
+        "mpdf/mpdf": "^6.1",
         "nwidart/laravel-modules": "^9.0"
     },
     "require-dev": {

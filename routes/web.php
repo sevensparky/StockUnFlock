@@ -1,8 +1,10 @@
 <?php
 
+// use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use Morilog\Jalali\Jalalian;
+// use Vatttan\Apdf\Apdf;
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -14,6 +16,18 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
 
+    // $pdf = Pdf::loadView('test', ['order' => $this]);
+    // return $pdf->download('podcast.pdf');
+
+    // $apdf = new Apdf();
+    // $apdf->print(resource_path('views/test'));
+
+    // $pdf = app('dompdf.wrapper');
+    // $pdf->loadView('test', ['order' => $this]);
+    // return $pdf->download('invoice.pdf');
+
+    $pdf = \PDF::loadView('test', ['order' => $this]);
+	return $pdf->download('document.pdf');
 
     // to database convert timestamp
 // $user = auth()->user()->created_at;
@@ -32,15 +46,15 @@ Route::get('/test', function () {
 // echo(date("d"));
 
 
-$current_date = date('d');
-$date = Carbon::now()->format('d');
+// $current_date = date('d');
+// $date = Carbon::now()->format('d');
 
 
-$data = [];
+// $data = [];
 
-$data['item'][] = 'kali';
-$data['local'][] = 'sparky';
+// $data['item'][] = 'kali';
+// $data['local'][] = 'sparky';
 
-dd($data['local']);
+// dd($data['local']);
 
 });
